@@ -15,6 +15,7 @@ namespace EmployeeSelectionConsole
         Confidence,
         Teamwork
     }
+
     /// <summary>
     /// Плохие качества сотрудника
     /// </summary>
@@ -26,6 +27,7 @@ namespace EmployeeSelectionConsole
         Workaholic = 512,
         Lazy = 1024
     }
+
     /// <summary>
     /// Основные качества сотрудника
     /// </summary>
@@ -44,6 +46,7 @@ namespace EmployeeSelectionConsole
         Compilers = 0b10000000000,
         DistributedSystems = 0b100000000000
     }
+
     /// <summary>
     /// Специальные качества сотрудника
     /// </summary>
@@ -65,16 +68,14 @@ namespace EmployeeSelectionConsole
     {
         static void Main()
         {
-
-            Primer1();
-            Primer2();
-
-
+            Mark();
+            Pavel();
         }
+
         /// <summary>
         /// Пример #1 для работы с перечислнением
         /// </summary>
-        public static void Primer1()
+        public static void Mark()
         {
             Employee mark = new();
             mark.FullName = "Mark Elliot Zuckerberg";
@@ -85,10 +86,11 @@ namespace EmployeeSelectionConsole
             mark.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
             Console.WriteLine($"Is {mark.FullName} good enought? {mark.IsGoodEnough}");
         }
+
         /// <summary>
         /// Пример #2 для работы с перечислнением
         /// </summary>
-        public static void Primer2()
+        public static void Pavel()
         {
             Employee pavel = new();
             pavel.FullName = "Durov Pavel Valeryevich";
