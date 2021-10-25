@@ -2,7 +2,6 @@
 
 namespace EmployeeSelectionConsole
 {
-
     enum GoodQualities
     {
         Responsibility,
@@ -55,27 +54,24 @@ namespace EmployeeSelectionConsole
 
     class Program
     {
-
-
         static void Main()
         {
-            Employee vasya = new();
-
-            vasya.FullName = "Petrov Vasiliy Denisovich";
-            vasya.Age = 25;
-            vasya.GoodQualities = GoodQualities.Teamwork | GoodQualities.Concentration | GoodQualities.LovesToStudy;
-            vasya.BadQualities = BadQualities.Lazy | BadQualities.Alcoholic;
-            vasya.GeneralSkills = GeneralSkills.Algorithms | GeneralSkills.Compilers;
-            vasya.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
-
-            Console.WriteLine($"Is {vasya.FullName} good enought? {vasya.IsGoodEnough}");
+            Employee mark = new();
+            mark.FullName = "Mark Elliot Zuckerberg";
+            mark.Age = 37;
+            mark.GoodQualities = GoodQualities.Teamwork | GoodQualities.Concentration | GoodQualities.LovesToStudy;
+            mark.BadQualities = BadQualities.Lazy | BadQualities.Alcoholic;
+            mark.GeneralSkills = GeneralSkills.Algorithms | GeneralSkills.Compilers;
+            mark.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
+            Console.WriteLine($"Is {mark.FullName} good enought? {mark.IsGoodEnough}");
 
             Employee pavel = new();
             pavel.FullName = "Durov Pavel Valeryevich";
             pavel.Age = 37;
             pavel.GoodQualities = GoodQualities.Teamwork | GoodQualities.Concentration | GoodQualities.LovesToStudy;
-            pavel.GeneralSkills = GeneralSkills.Algorithms | GeneralSkills.Compilers;
-            pavel.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
+            pavel.GeneralSkills = GeneralSkills.DistributedSystems | GeneralSkills.Algorithms | GeneralSkills.Compilers;
+            pavel.BadQualities = BadQualities.Workaholic;
+            pavel.SpecificSkills = SpecificSkills.Vulkan | SpecificSkills.PostgreSQL | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
             Console.WriteLine($"Is {pavel.FullName} good enought? {pavel.IsGoodEnough}");
 
         }
