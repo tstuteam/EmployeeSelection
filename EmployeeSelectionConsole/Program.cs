@@ -2,6 +2,7 @@
 
 namespace EmployeeSelectionConsole
 {
+
     enum GoodQualities
     {
         Responsibility,
@@ -13,63 +14,49 @@ namespace EmployeeSelectionConsole
         Teamwork
     }
 
+    [Flags]
     enum BadQualities
     {
-        Hyperactivity = -10,
-        Alcoholic = -100,
-        Workaholic = -20,
-        Lazy = -5
+        Hyperactivity = 128,
+        Alcoholic = 256,
+        Workaholic = 512,
+        Lazy = 1024
     }
 
     [Flags]
     enum GeneralSkills
     {
-        Nothing = 0b000000000000,
-        Programming = 0b000000000001,
-        ComputerArchitecture = 0b000000000010,
-        Math = 0b000000000100,
-        Algorithms = 0b000000001000,
-        DataStructures = 0b000000010000,
-        OperatingSystems = 0b000000100000,
-        ComputerNetworking = 0b000010000000,
-        Databases = 0b000100000000,
-        ProgrammingLanguages = 0b001000000000,
-        Compilers = 0b010000000000,
+        Programming = 0b1,
+        ComputerArchitecture = 0b10,
+        Math = 0b100,
+        Algorithms = 0b1000,
+        DataStructures = 0b10000,
+        OperatingSystems = 0b100000,
+        ComputerNetworking = 0b10000000,
+        Databases = 0b100000000,
+        ProgrammingLanguages = 0b1000000000,
+        Compilers = 0b10000000000,
         DistributedSystems = 0b100000000000
     }
 
+    [Flags]
     enum SpecificSkills
     {
-        CPlusPlus = 50,
-        C = 10,
-        PostgreSQL = 15,
-        Linux = 25,
-        Qt = 20,
-        LinearAlgebra = 45,
-        DiscreteMath = 40,
-        OpenGL = 60,
-        Vulkan = 70,
-        English = 16
-    }
-
-    public class Employee
-    {
-        private static readonly int mustHaveScore = 300;
-        public int Age { get; set; }
-        public string FullName { get; set; }
-        internal GoodQualities GoodQualities { get; set; }
-        internal BadQualities BadQualities { get; set; }
-        internal GeneralSkills GeneralSkills { get; set; }
-        internal SpecificSkills SpecificSkills { get; set; }
-
-        public bool IsGoodEnough => ((int)SpecificSkills +
-                                     (int)GoodQualities +
-                                     (int)BadQualities) >= mustHaveScore;
-
+        CPlusPlus = 0b1,
+        PostgreSQL = 0b10,
+        Linux = 0b100,
+        Qt = 0b1000,
+        LinearAlgebra = 0b10000,
+        DiscreteMath = 0b100000,
+        OpenGL = 0b1000000,
+        Vulkan = 0b10000000,
+        English = 0b100000000
     }
 
     class Program
     {
+
+
         static void Main()
         {
             Employee vasya = new();
@@ -77,11 +64,20 @@ namespace EmployeeSelectionConsole
             vasya.FullName = "Petrov Vasiliy Denisovich";
             vasya.Age = 25;
             vasya.GoodQualities = GoodQualities.Teamwork | GoodQualities.Concentration | GoodQualities.LovesToStudy;
-            vasya.BadQualities = BadQualities.Lazy & BadQualities.Alcoholic;
+            vasya.BadQualities = BadQualities.Lazy | BadQualities.Alcoholic;
             vasya.GeneralSkills = GeneralSkills.Algorithms | GeneralSkills.Compilers;
             vasya.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
 
-            Console.WriteLine(vasya.IsGoodEnough);
+            Console.WriteLine($"Is {vasya.FullName} good enought? {vasya.IsGoodEnough}");
+
+            Employee pavel = new();
+            pavel.FullName = "Durov Pavel Valeryevich";
+            pavel.Age = 37;
+            pavel.GoodQualities = GoodQualities.Teamwork | GoodQualities.Concentration | GoodQualities.LovesToStudy;
+            pavel.GeneralSkills = GeneralSkills.Algorithms | GeneralSkills.Compilers;
+            pavel.SpecificSkills = SpecificSkills.Qt | SpecificSkills.LinearAlgebra | SpecificSkills.CPlusPlus;
+            Console.WriteLine($"Is {pavel.FullName} good enought? {pavel.IsGoodEnough}");
+
         }
     }
 }
